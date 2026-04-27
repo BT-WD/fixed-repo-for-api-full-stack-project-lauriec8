@@ -1,1 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'AlienSpace', sans-serif;
+}
 
+body {
+    background-image: url('/images/space_bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #0b132b; 
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.game-header {
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 5rem;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+#score {
+    font-family: 'SpaceExplorer', sans-serif; 
+    font-size: 2.5rem;
+    color: #ffd700; 
+}
+
+.score-board {
+    font-family: 'SpaceExplorer', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.question-container {
+    margin-bottom: 50px;
+}
+
+.question-text {
+    font-family: 'SpaceOdyssey', sans-serif; 
+    font-size: 3.5rem;
+    font-weight: 500;
+}
+
+.answers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+}
+
+.answer-btn {
+    font-family: 'SpaceOdyssey', sans-serif; 
+    background-color: rgba(27, 38, 59, 0.8); 
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3); 
+    padding: 30px;
+    font-size: 3rem;
+    border-radius: 40px; 
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.answer-btn:hover {
+    background-color: #415a77;
+    transform: scale(1.02);
+}
+
+@media (max-width: 600px) {
+    .answers-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+}
+
+@font-face {
+  font-family: 'AlienSpace';
+  src: url('fonts/AlienSpace.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SpaceExplorer';
+  src: url('fonts/SPACE\ EXPLORER.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SpaceOdyssey';
+  src: url('fonts/SpaceOdysseyDEMO.otf') format('opentype'); 
+  font-weight: normal;
+  font-style: normal;
+}
