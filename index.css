@@ -3,6 +3,7 @@
     src: url('fonts/AlienSpace.ttf') format('truetype');
 }
 
+
 @font-face {
     font-family: 'Childhood';
     src: url('fonts/child-hood.regular.otf') format('opentype');
@@ -15,10 +16,12 @@
     font-family: 'AlienSpace', sans-serif;
 }
 
+
 body {
     background-image: url('/images/space_bg.jpg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: #0b132b;
     color: white;
@@ -26,11 +29,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    /* This makes text look sharper and thinner */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden; /* Prevents scrollbars during gameplay */
 }
+
 
 .game-container {
     width: 95%;
@@ -41,19 +42,23 @@ body {
 .title {
     font-size: 5rem;
     letter-spacing: 5px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px #00d4ff;
     margin-bottom: 10px;
 }
 
+
 .score-board {
     font-size: 2.5rem;
+    margin-bottom: 20px;
     color: #ffd700;
-    margin-bottom: 30px;
 }
+
 
 .question-text {
     font-family: 'Childhood', sans-serif;
     font-size: 5rem;
-    font-weight: 400; /* Forced to be thinner */
+    font-weight: 400; /* 400 is "normal", 300 is "light" */
     margin-bottom: 40px;
     line-height: 1.1;
 }
@@ -61,33 +66,99 @@ body {
 .answers-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 25px;
 }
 
 .answer-btn {
     font-family: 'Childhood', sans-serif;
     font-size: 4.5rem;
-    font-weight: 400;
-    padding: 30px;
+    padding: 35px;
+    border-radius: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
     background: rgba(27, 38, 59, 0.85);
     color: white;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-radius: 40px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.2s ease-in-out;
 }
+
 
 .answer-btn:hover {
     background: #415a77;
-    transform: scale(1.02);
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
 }
+
 
 .answer-btn.correct {
     background: rgba(46, 204, 113, 0.8) !important;
     border-color: #2ecc71;
 }
 
+
 .answer-btn.wrong {
     background: rgba(231, 76, 60, 0.8) !important;
     border-color: #e74c3c;
+}
+
+.mission-report {
+    width: 100%;
+    max-height: 55vh;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border: 3px solid #00d4ff;
+    border-radius: 20px;
+    text-align: left;
+    font-family: 'Childhood', sans-serif;
+}
+
+.mission-report h3 {
+    font-size: 3.5rem;
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 25px;
+    text-decoration: underline;
+}
+
+.log-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-left: 10px solid white;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.log-item p {
+    font-size: 2rem;
+    margin: 8px 0;
+}
+
+.log-success {
+    border-color: #2ecc71;
+}
+
+
+.log-fail {
+    border-color: #e74c3c;
+}
+
+.mission-report::-webkit-scrollbar {
+    width: 12px;
+}
+
+.mission-report::-webkit-scrollbar-thumb {
+    background: #00d4ff;
+    border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+    .answers-grid {
+        grid-template-columns: 1fr;
+    }
+    .title, .question-text {
+        font-size: 3rem;
+    }
+    .answer-btn {
+        font-size: 2.5rem;
+        padding: 20px;
+    }
 }
