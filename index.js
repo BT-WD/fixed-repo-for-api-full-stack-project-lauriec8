@@ -1,23 +1,16 @@
-// --- Configuration ---
 let score = 0;
 let questionsAsked = 0;
 let correctAnswer = "";
 let missionLog = [];
 const MAX_QUESTIONS = 10;
 
-
-// --- DOM Elements ---
 const progressElement = document.getElementById('progress');
 const scoreElement = document.getElementById('score');
 const questionElement = document.getElementById('question');
 const answerButtonsContainer = document.getElementById('answer-buttons');
 
-
-// --- Helper Functions ---
 const sleep = (ms) => new Promise(res => setTimeout(res, ms));
 
-
-// --- Game Logic ---
 async function getQuestion(retries = 3) {
     progressElement.textContent = `${questionsAsked + 1}/${MAX_QUESTIONS}`;
     questionElement.innerHTML = "SCANNING DEEP SPACE...";
@@ -71,7 +64,6 @@ function checkAnswer(btn, selected, qText) {
    
     const isCorrect = (selected === correctAnswer);
    
-    // Save to log for the report
     missionLog.push({
         q: qText,
         sel: selected,
@@ -80,9 +72,7 @@ function checkAnswer(btn, selected, qText) {
     });
     localStorage.setItem('spaceLog', JSON.stringify(missionLog));
 
-
     questionsAsked++;
-
 
     if (isCorrect) {
         btn.classList.add('correct');
@@ -95,11 +85,10 @@ function checkAnswer(btn, selected, qText) {
         });
     }
 
-
     if (questionsAsked >= MAX_QUESTIONS) {
-        setTimeout(endGame, 2000);
+        setTimeout(endGame, 3500);
     } else {
-        setTimeout(getQuestion, 2000);
+        setTimeout(getQuestion, 3500);
     }
 }
 
@@ -124,8 +113,6 @@ function endGame() {
     answerButtonsContainer.innerHTML = reportHTML + `</div><button class="answer-btn" style="margin-top:20px;" onclick="location.reload()">NEW LAUNCH</button>`;
 }
 
-
-// Initialize
 localStorage.removeItem('spaceLog');
 getQuestion();
 
